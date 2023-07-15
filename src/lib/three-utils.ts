@@ -1,7 +1,7 @@
 import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
-import { CSS2DRenderer } from 'three/examples/jsm/renderers/CSS2DRenderer';
+import { CSS2DObject, CSS2DRenderer } from 'three/examples/jsm/renderers/CSS2DRenderer';
 
 export function setupScene(element: HTMLCanvasElement) {
   const renderer = new THREE.WebGLRenderer({ canvas: element, antialias: true });
@@ -16,7 +16,7 @@ export function setupScene(element: HTMLCanvasElement) {
   document.body.appendChild(htmlRenderer.domElement);
 
   const scene = new THREE.Scene();
-  scene.background = new THREE.Color(0x888888);
+  scene.background = new THREE.Color(0x5c5f66);
 
   const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 2000);
   camera.position.set(0, 2, 3);
@@ -63,4 +63,13 @@ export function setupScene(element: HTMLCanvasElement) {
     htmlRenderer,
     destroyScene,
   };
+}
+
+export function createCssObject(x: number, y: number, z: number) {
+  const el = document.createElement('div');
+  el.style.pointerEvents = 'auto';
+  const css2DObject = new CSS2DObject(el);
+  css2DObject.position.set(x, y, z);
+
+  return css2DObject;
 }

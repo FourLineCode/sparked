@@ -29,6 +29,8 @@
     "vite": "^4.4.2"
   },
   "dependencies": {
+    "@svelteuidev/composables": "^0.14.0",
+    "@svelteuidev/core": "^0.14.0",
     "tailwind-merge": "^1.13.2"
   }
 }

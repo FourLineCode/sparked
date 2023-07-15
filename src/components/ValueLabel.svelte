@@ -9,7 +9,7 @@
 {#if visible}
   <div
     class={cn(
-      'w-32 flex text-sm items-center justify-center transform px-4 py-2 font-bold bg-white border-2 border-gray-900 rounded-full',
+      'w-32 text-center px-4 py-1 font-bold bg-white border-2 border-green-600 rounded-full',
       className
     )}
   >

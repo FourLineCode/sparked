@@ -1,8 +1,8 @@
 <script lang="ts">
-  import { createCssObject } from '$lib/create-css-object';
-  import { setupScene } from '$lib/setup-scene';
+  import { createCssObject, setupScene } from '$lib/three-utils';
   import { onMount } from 'svelte';
   import ButtonInput from '../../../components/ButtonInput.svelte';
+  import ShowControlsButton from '../../../components/ShowControlsButton.svelte';
   import ValueLabel from '../../../components/ValueLabel.svelte';
 
   let controls = false;
@@ -60,7 +60,7 @@
   $: for (const [key, element] of Object.entries(annotations)) {
     if (key === 'current') {
       element?.$set({
-        label: values.resistance === 0 ? '♾️' : `${values[key].toFixed(2).replace(/\.00/g, '')} A`,
+        label: values.resistance === 0 ? '∞' : `${values[key].toFixed(2).replace(/\.00/g, '')} A`,
       });
     } else if (key === 'resistance' || key === 'voltage') {
       element?.$set({ label: values[key] + (key === 'voltage' ? ' V' : ' Ω') });
@@ -71,24 +71,6 @@
 </script>
 
 <main class="relative w-screen h-screen">
-  <div class="absolute z-50 top-5 left-5">
-    <button
-      on:click={toggleControls}
-      class:bg-green-300={controls}
-      class="p-1 transition-colors border-2 border-black rounded-md"
-    >
-      <svg
-        fill="black"
-        aria-hidden="true"
-        viewBox="0 0 20 20"
-        class="w-[23px] h-[23px] text-gray-800 dark:text-white"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path
-          d="M1 5h1.424a3.228 3.228 0 0 0 6.152 0H19a1 1 0 1 0 0-2H8.576a3.228 3.228 0 0 0-6.152 0H1a1 1 0 1 0 0 2Zm18 4h-1.424a3.228 3.228 0 0 0-6.152 0H1a1 1 0 1 0 0 2h10.424a3.228 3.228 0 0 0 6.152 0H19a1 1 0 0 0 0-2Zm0 6H8.576a3.228 3.228 0 0 0-6.152 0H1a1 1 0 0 0 0 2h1.424a3.228 3.228 0 0 0 6.152 0H19a1 1 0 0 0 0-2Z"
-        />
-      </svg>
-    </button>
-  </div>
+  <ShowControlsButton show={controls} onClick={toggleControls} />
   <canvas id="canvas" class="block w-full h-full" />
 </main>
