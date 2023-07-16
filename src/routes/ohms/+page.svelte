@@ -141,6 +141,7 @@
       You can visualize a physical representation of Ohm's Law circuit in 3D. Start by clicking the
       button below.
     </p>
+    <br />
     <Button
       fullSize
       radius="md"

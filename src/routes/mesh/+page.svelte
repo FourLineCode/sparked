@@ -88,6 +88,7 @@
       You can visualize a physical representation of Mesh current analysis in 3D. Start by clicking
       the button below.
     </p>
+    <br />
     <Button
       fullSize
       radius="md"

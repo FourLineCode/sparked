@@ -2,6 +2,7 @@
   import { goto } from '$app/navigation';
   import { Button } from '@svelteuidev/core';
   import { slide } from 'svelte/transition';
+  import Formula from '../../components/Formula.svelte';
   import PlayIcon from '../../components/PlayIcon.svelte';
   import Var from '../../components/Var.svelte';
 
@@ -61,42 +62,59 @@
 
 {#if step >= 3}
   <div in:slide out:slide>
-    <!-- <p>
-      Our circuit has two meshes. We identify two loop currents and call them i1 and i2. These are
-      going to be our independent variables. Important: the loop current directions are the same,
-      both flow in a clockwise direction.
-    </p>
-    <img src="/images/mesh2.svg" alt="mesh2" class="w-full h-auto" />
     <p>
-      By defining a loop current in every mesh, you will have enough independent equations to solve
-      the circuit.
+      Our example circuit has three nodes, <Var>a</Var>, <Var>b</Var>, and <Var>c</Var>, so <Var
+        >N = 3</Var
+      >. Node <Var>c</Var> has a lot of connections, 4, and it connects directly to both sources. This
+      makes it a good candidate to play the role of reference node. Node <Var>c</Var> has been marked
+      with the ground symbol to let everyone know our choice for reference node.
+    </p>
+    <img src="/images/node2.svg" alt="mesh2" class="w-full h-auto" />
+    <p>
+      We can express the voltage across the <Var>20 Ω</Var> resistor as the difference between the two
+      node voltages. This can be done two ways, with either <Var>Va</Var> or <Var>Vb</Var> in the first
+      position in the voltage difference equation. The first term in the equation is the one we consider
+      the more positive of the two. Since we use the sign convention for passive components, the choice
+      we make for voltage polarity determines the direction of the current arrow. The current arrow points
+      into the positive sign on the resistor voltage.
     </p>
     <br />
-    <p>Applying KVL we get the following equations:</p>
+    <img src="/images/node3.svg" alt="mesh2" class="w-full h-auto" />
     <br />
-    <Formula>
-      mesh 1: +5v - 2000 i1 - 1000 (i1 - i2) = 0
-      <br />
-      mesh 2: -1000 (i1 - i2) - 2000 i2 - 2V = 0
-    </Formula>
+    <p>
+      The voltage <Var>Va</Var> is easy to figure out. Node <Var>a</Var> connects to a voltage source
+      that connects to reference node <Var>c</Var>. That makes it an easy node. The voltage at node <Var
+        >a</Var
+      > is <Var>Va = 140V</Var>.
+    </p>
     <br />
-    <p>Solving both equations we get following values for the mesh currents:</p>
-    <Formula>
-      i1 = -0.125 mA
-      <br />
-      i2 = +1.625 mA
-    </Formula>
-    <br /> -->
   </div>
 {/if}
 
 {#if step >= 4}
+  <div in:slide out:slide>
+    <p>
+      Our system of equations happens to be just one equation. Let's solve it to find the node
+      voltage.
+    </p>
+    <br />
+    <Formula>7 - Vb/20 - Vb/6 - Vb/5 = -18</Formula>
+    <Formula>- Vb/20 - Vb/6 - Vb/5 = -25</Formula>
+    <Formula>(- 25/60) Vb = -25</Formula>
+    <Formula>Vb = -25 (-60/25)</Formula>
+    <Formula>Vb = 60 V</Formula>
+    <br />
+  </div>
+{/if}
+
+{#if step >= 5}
   <div in:slide out:slide>
     <h2 class="text-xl font-bold">Visualize</h2>
     <p>
       You can visualize a physical representation of Nodal analysis in 3D. Start by clicking the
       button below.
     </p>
+    <br />
     <Button
       fullSize
       radius="md"
@@ -110,7 +128,7 @@
   </div>
 {/if}
 
-{#if step < 4}
+{#if step < 5}
   <Button
     on:click={goNext}
     fullSize
