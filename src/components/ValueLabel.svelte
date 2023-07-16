@@ -8,15 +8,17 @@
 </script>
 
 {#if visible}
-  <p class="text-xs font-bold text-center text-white rounded-full drop-shadow-md bg-black/30">
-    {label}
-  </p>
-  <div
-    class={cn(
-      'w-32 text-center px-4 py-1 font-bold bg-white border-2 border-green-600 rounded-full',
-      className
-    )}
-  >
-    {value}
+  <div class="transform scale-50 lg:scale-100">
+    <p class="text-xs font-bold text-center text-white rounded-full drop-shadow-md bg-black/30">
+      {label}
+    </p>
+    <div
+      class={cn(
+        'w-32 text-center px-4 py-1 font-bold bg-white border-2 border-green-600 rounded-full',
+        className
+      )}
+    >
+      {value}
+    </div>
   </div>
 {/if}
