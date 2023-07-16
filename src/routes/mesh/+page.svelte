@@ -73,9 +73,9 @@
     <br />
     <p>Solving both equations we get following values for the mesh currents:</p>
     <Formula>
-      i1 = -0.125 mA
+      i1 = +1.625 mA
       <br />
-      i2 = +1.625 mA
+      i2 = -0.125 mA
     </Formula>
     <br />
   </div>

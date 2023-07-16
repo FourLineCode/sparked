@@ -4,12 +4,12 @@
   import { slide } from 'svelte/transition';
   import PlayIcon from './PlayIcon.svelte';
 
-  export let onClick: (id: number) => void;
   export let id: number;
   export let active: number | null;
-  export let description: string;
   export let path: string;
   export let name: string;
+  export let description: string;
+  export let onClick: (id: number) => void;
 
   function gotoPath() {
     goto(path);
@@ -22,10 +22,10 @@
 >
   <div class="flex items-center gap-4">
     <svg
-      class="w-[21px] h-[21px] text-gray-800 dark:text-white"
+      class="w-[21px] h-[21px] text-green-500"
       aria-hidden="true"
       xmlns="http://www.w3.org/2000/svg"
-      fill="black"
+      fill="currentColor"
       viewBox="0 0 20 18"
     >
       <path
