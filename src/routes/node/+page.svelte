@@ -3,6 +3,7 @@
   import { Button } from '@svelteuidev/core';
   import { slide } from 'svelte/transition';
   import PlayIcon from '../../components/PlayIcon.svelte';
+  import Var from '../../components/Var.svelte';
 
   let step = 1;
   function goNext() {
@@ -18,34 +19,43 @@
 
 {#if step >= 1}
   <div in:slide out:slide>
-    <!-- <p>
-      Mesh Current Analysis is a technique used to find the currents circulating around a loop or
-      mesh with in any closed path of a circuit.
+    <p>
+      Nodal Analysis is a technique used to calculating the voltage distribution between the circuit
+      nodes.
     </p>
     <br />
     <p>
-      As with any circuit analysis challenge, we have to solve a system of 2E independent equations,
-      where E is the number of circuit elements. The Mesh Current Method efficiently manages the
-      analysis task, resulting in a relatively small number of equations to solve. The Mesh Current
-      Method is based on Kirchhoff's Voltage Law (KVL).
+      Up to now, we've talked about the element voltage that appears across the terminals of a
+      single element (also called a branch voltage). When we use the term node voltage, we are
+      referring to the potential difference between two nodes of a circuit.
     </p>
-    <br /> -->
+    <br />
+    <img src="/images/node1.svg" alt="node1" class="w-full h-auto" />
+    <br />
+    <p>
+      We select one of the nodes in our circuit to be the reference node. All the other node
+      voltages are measured with respect to this one reference node. If node <Var>c</Var> is assigned
+      as the reference node, we establish two node voltages at nodes <Var>a</Var> and <Var>b</Var>.
+    </p>
+    <br />
   </div>
 {/if}
 
 {#if step >= 2}
   <div in:slide out:slide>
-    <!-- <p>The Mesh Current Method uses two special terms: loop and mesh.</p>
-    <img src="/images/mesh.svg" alt="mesh" class="w-full h-auto" />
+    <h2 class="text-xl font-bold">Method</h2>
+    <p>The Node Voltage Method breaks down circuit analysis into this sequence of steps,</p>
+    <ul class="pl-4 list-disc">
+      <li>Assign a reference node (ground).</li>
+      <li>Assign node voltage names to the remaining nodes.</li>
+      <li>
+        Solve the easy nodes first, the ones with a voltage source connected to the reference node.
+      </li>
+      <li>Write Kirchhoff's Current Law for each node. Do Ohm's Law in your head.</li>
+      <li>Solve the resulting system of equations for all node voltages.</li>
+      <li>Solve for any currents you want to know using Ohm's Law.</li>
+    </ul>
     <br />
-    <p>
-      A loop is any closed path around a circuit. To trace a loop, you start at any component
-      terminal, and trace a path through connected elements until you get back to the starting
-      point. A loop is allowed to go through an element just one time. In the circuit above, there
-      are three loops, two solid loops, I and II, and one dashed loop III, all the way around the
-      outside.
-    </p>
-    <br /> -->
   </div>
 {/if}
 

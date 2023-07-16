@@ -31,13 +31,14 @@
           if (prop === 'current') {
             svelteComponent = new ValueLabel({
               target: object.element,
-              props: { label: '' },
+              props: { label: prop, value: '' },
             });
           } else if (prop === 'resistance' || prop === 'voltage') {
             svelteComponent = new ButtonInput({
               target: object.element,
               props: {
-                label: '',
+                label: prop,
+                value: '',
                 onIncrement: () => (values = { ...values, [prop]: values[prop] + 1 }),
                 onDecrement: () => (values = { ...values, [prop]: values[prop] - 1 }),
               },
@@ -60,10 +61,10 @@
   $: for (const [key, element] of Object.entries(annotations)) {
     if (key === 'current') {
       element?.$set({
-        label: values.resistance === 0 ? '∞' : `${values[key].toFixed(2).replace(/\.00/g, '')} A`,
+        value: values.resistance === 0 ? '∞' : `${values[key].toFixed(2).replace(/\.00/g, '')} A`,
       });
     } else if (key === 'resistance' || key === 'voltage') {
-      element?.$set({ label: values[key] + (key === 'voltage' ? ' V' : ' Ω') });
+      element?.$set({ value: values[key] + (key === 'voltage' ? ' V' : ' Ω') });
     }
   }
 

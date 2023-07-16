@@ -3,16 +3,20 @@
 
   export let visible: boolean = true;
   export let label: string;
+  export let value: string;
   export let className: string = '';
 </script>
 
 {#if visible}
+  <p class="text-xs font-bold text-center text-white rounded-full drop-shadow-md bg-black/30">
+    {label}
+  </p>
   <div
     class={cn(
       'w-32 text-center px-4 py-1 font-bold bg-white border-2 border-green-600 rounded-full',
       className
     )}
   >
-    {label}
+    {value}
   </div>
 {/if}
