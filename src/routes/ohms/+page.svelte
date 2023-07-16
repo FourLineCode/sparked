@@ -119,7 +119,14 @@
       </div>
     </div>
     {#if win !== true}
-      <Button on:click={onGuess} disabled={!selected} color="blue" fullSize radius="md">
+      <Button
+        on:click={onGuess}
+        disabled={!selected}
+        fullSize
+        radius="md"
+        variant="gradient"
+        gradient={{ from: 'violet', to: 'green', deg: 90 }}
+      >
         Submit
       </Button>
     {/if}
@@ -134,7 +141,13 @@
       You can visualize a physical representation of Ohm's Law circuit in 3D. Start by clicking the
       button below.
     </p>
-    <Button color="green" fullSize radius="md" on:click={gotoSimulation}>
+    <Button
+      fullSize
+      radius="md"
+      on:click={gotoSimulation}
+      variant="gradient"
+      gradient={{ from: 'green', to: 'blue', deg: 90 }}
+    >
       <PlayIcon slot="leftIcon" />
       <span>Start simulation</span>
     </Button>
@@ -142,5 +155,11 @@
 {/if}
 
 {#if step < 4}
-  <Button on:click={goNext} color="green" fullSize radius="md">Next</Button>
+  <Button
+    on:click={goNext}
+    fullSize
+    radius="md"
+    variant="gradient"
+    gradient={{ from: 'grape', to: 'blue', deg: 90 }}>Next</Button
+  >
 {/if}
