@@ -34,4 +34,36 @@
     description="The mathematical method for calculating the voltage distribution between the circuit nodes"
     onClick={onActiveChange}
   />
+  <Topic
+    id={4}
+    {active}
+    name={'Kirchhoff Current Law'}
+    path="/kcl"
+    description="KCL describes how a charge enters and leaves a wire junction point or node on a wire"
+    onClick={onActiveChange}
+  />
+  <Topic
+    id={5}
+    {active}
+    name={'Kirchhoff Voltage Law'}
+    path="/kvl"
+    description="KVL describes the principle of conservation of energy"
+    onClick={onActiveChange}
+  />
+  <Topic
+    id={6}
+    {active}
+    name={'Thevenin’s Theorem'}
+    path="/thevenin"
+    description="Thevenin's theorem allow complex linear networks to be simplified down to a single source with an associated internal impedance"
+    onClick={onActiveChange}
+  />
+  <Topic
+    id={7}
+    {active}
+    name={'Norton’s Theorem'}
+    path="/norton"
+    description="Norton's theorem allow complex linear networks to be simplified down to a single source with an associated internal impedance"
+    onClick={onActiveChange}
+  />
 </div>
